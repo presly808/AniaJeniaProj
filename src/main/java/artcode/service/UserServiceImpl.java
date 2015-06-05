@@ -1,6 +1,7 @@
 package artcode.service;
 
 import artcode.dao.UserDao;
+import artcode.exception.NoUserFoundException;
 import artcode.model.User;
 
 import java.util.List;
@@ -30,13 +31,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUser(String name) {
-        return null;
+    public User findUser(String name) throws NoUserFoundException {
+        return userDao.findByName(name);
     }
 
     @Override
     public User login(String name, String pass) {
         return null;
+    }
+
+    @Override
+    public void delete(long id) {
+        userDao.delete(id);
     }
 
     @Override

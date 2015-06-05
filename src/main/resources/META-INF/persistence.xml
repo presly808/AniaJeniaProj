@@ -11,6 +11,7 @@
 
         <!--mapping classes-->
         <class>artcode.model.User</class>
+        <class>artcode.model.Post</class>
 
         <properties>
 

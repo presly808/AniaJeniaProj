@@ -1,5 +1,6 @@
 package artcode.dao;
 
+import artcode.exception.NoUserFoundException;
 import artcode.model.User;
 import artcode.storage.DataHolder;
 
@@ -52,5 +53,10 @@ public class UserDaoImpl implements UserDao {
         // see Collections class
 
         return users;
+    }
+
+    @Override
+    public User findByName(String name) throws NoUserFoundException {
+        return null;
     }
 }
