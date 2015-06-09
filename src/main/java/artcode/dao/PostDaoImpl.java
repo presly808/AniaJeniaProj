@@ -24,4 +24,15 @@ public class PostDaoImpl implements PostDao {
         User found = manager.find(User.class,id);
         return found.getPosts();
     }
+
+    public PostDaoImpl() {
+    }
+
+    public EntityManagerFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(EntityManagerFactory factory) {
+        this.factory = factory;
+    }
 }

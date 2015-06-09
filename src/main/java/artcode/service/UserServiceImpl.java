@@ -3,15 +3,21 @@ package artcode.service;
 import artcode.dao.UserDao;
 import artcode.exception.NoUserFoundException;
 import artcode.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by serhii on 03.06.15.
- */
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    @Qualifier(value = "userDaoJpaImpl")
     private UserDao userDao;
+
+    public UserServiceImpl() {
+    }
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -48,5 +54,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userDao.findAll();
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 }

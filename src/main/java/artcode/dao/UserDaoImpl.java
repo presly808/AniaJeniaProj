@@ -3,18 +3,20 @@ package artcode.dao;
 import artcode.exception.NoUserFoundException;
 import artcode.model.User;
 import artcode.storage.DataHolder;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by serhii on 03.06.15.
- */
+@Component
 public class UserDaoImpl implements UserDao {
 
     private DataHolder dataHolder;
+
+    public UserDaoImpl() {
+    }
 
     public UserDaoImpl(DataHolder dataHolder) {
         this.dataHolder = dataHolder;
@@ -58,5 +60,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findByName(String name) throws NoUserFoundException {
         return null;
+    }
+
+    public DataHolder getDataHolder() {
+        return dataHolder;
+    }
+
+    public void setDataHolder(DataHolder dataHolder) {
+        this.dataHolder = dataHolder;
     }
 }

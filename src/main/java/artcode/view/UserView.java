@@ -5,15 +5,25 @@ import artcode.model.Post;
 import artcode.model.User;
 import artcode.service.PostService;
 import artcode.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
 
+@Component("viewBean")
 public class UserView {
 
+    @Autowired
     private PostService postService;
+    @Autowired
     private UserService userService;
+
     private Scanner sc = new Scanner(System.in);
+
+    public UserView() {
+    }
 
     public UserView(PostService postService, UserService userService) {
         this.postService = postService;
@@ -120,5 +130,27 @@ public class UserView {
         System.out.println("7.delete user");
     }
 
+    public PostService getPostService() {
+        return postService;
+    }
 
+    public void setPostService(PostService postService) {
+        this.postService = postService;
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public Scanner getSc() {
+        return sc;
+    }
+
+    public void setSc(Scanner sc) {
+        this.sc = sc;
+    }
 }

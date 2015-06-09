@@ -2,6 +2,8 @@ package artcode.dao;
 
 import artcode.exception.NoUserFoundException;
 import artcode.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,12 +11,22 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.List;
 
-/**
- * Created by serhii on 03.06.15.
- */
+@Repository
 public class UserDaoJpaImpl implements UserDao {
 
+    @Autowired
     private EntityManagerFactory entityManagerFactory;
+
+    public UserDaoJpaImpl() {
+    }
+
+    public EntityManagerFactory getEntityManagerFactory() {
+        return entityManagerFactory;
+    }
+
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
 
     public UserDaoJpaImpl(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
